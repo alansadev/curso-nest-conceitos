@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
   Put,
@@ -30,7 +31,7 @@ export class MessagesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', ParseIntPipe) id: number) {
     return this.messagesService.findOne(id);
   }
 
@@ -41,7 +42,7 @@ export class MessagesController {
 
   @Put(':id')
   updateRoute(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateMessageDto: UpdateMessageDto,
   ) {
     return this.messagesService.update(id, updateMessageDto);
@@ -49,14 +50,14 @@ export class MessagesController {
 
   @Patch(':id')
   patchRoute(
-    @Param('id') id: string,
+    @Param('id', ParseIntPipe) id: number,
     @Body() updateMessageDto: UpdateMessageDto,
   ) {
     return this.messagesService.update(id, updateMessageDto);
   }
 
   @Delete(':id')
-  deleteRoute(@Param('id') id: string) {
+  deleteRoute(@Param('id', ParseIntPipe) id: number) {
     return this.messagesService.remove(id);
   }
 }
