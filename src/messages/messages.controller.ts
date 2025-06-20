@@ -10,6 +10,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common';
+import { MessagesService } from './messages.service';
 
 type messageBody = {
   message: string;
@@ -22,38 +23,37 @@ type pagination = {
 
 @Controller('messages')
 export class MessagesController {
-  @HttpCode(201)
+  constructor(private readonly messagesService: MessagesService) {}
+
   @Get()
   findAll(@Query() pagination: pagination) {
     const { limit = 10, offset = 0 } = pagination;
-    return `This route return all messages. Limit=${limit}, Offset=${offset}`;
+
+    return this.messagesService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `This route return message ID: ${id}`;
+    return this.messagesService.findOne(id);
   }
 
   @Post()
-  create(@Body() body: messageBody) {
-    return body;
+  create(@Body() body: any) {
+    return this.messagesService.create(body);
   }
 
   @Put(':id')
-  updateRoute(@Param() id: string, @Body() body: messageBody) {
-    return { id, ...body };
+  updateRoute(@Param('id') id: string, @Body() body: messageBody) {
+    return this.messagesService.update(id, body);
   }
 
   @Patch(':id')
-  patchRoute(@Param() id: string, @Body() body: messageBody) {
-    return {
-      id,
-      ...body,
-    };
+  patchRoute(@Param('id') id: string, @Body() body: messageBody) {
+    return this.messagesService.update(id, body);
   }
 
   @Delete(':id')
   deleteRoute(@Param('id') id: string) {
-    return `deleted - ${id}`;
+    return this.messagesService.remove(id);
   }
 }
