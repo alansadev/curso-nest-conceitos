@@ -1,21 +1,35 @@
 @baseUrl = http://localhost:3001
 
 ### AppControllerGetHello
-
 # @name AppControllerGetHello
-GET {{baseUrl}}/home/hello
+GET {{baseUrl}}/home/hello/
 
 ### ExemploDeRota
-
 # @name ExemploDeRota
-GET {{baseUrl}}/home/exemplo
+GET {{baseUrl}}/home/exemplo/
 
 ### Concepts Home
-
 # @name ConceptsHome
-GET {{baseUrl}}/concepts
+GET {{baseUrl}}/concepts/
 
 ### Conceitos Home
-
 # @name ConceitosHome
-GET {{baseUrl}}/conceitos
+GET {{baseUrl}}/conceitos/
+
+### Messages
+# @name MessageAll
+GET {{baseUrl}}/messages/
+
+### Message with params
+# @name MessageParam
+GET {{baseUrl}}/messages/1
+
+### CreateMessage
+# @name CreateMessage
+POST {{baseUrl}}/messages/
+Content-Type: application/json
+
+{
+  "message": "Este é o recado que estou enviando.",
+  "nova_chave": "outro valor"
+}
