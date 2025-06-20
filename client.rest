@@ -19,6 +19,8 @@ GET {{baseUrl}}/conceitos/
 ### Messages
 # @name MessageAll
 GET {{baseUrl}}/messages/
+?limit=10
+&offset=10
 
 ### Message with params
 # @name MessageParam
