@@ -39,28 +39,20 @@ Content-Type: application/json
 
 ### PatchMessage
 # @name PatchMessage
-PATCH  {{baseUrl}}/messages/6
+PATCH  {{baseUrl}}/messages/2
 Content-Type: application/json
 
 {
-  "text": "Este é um recado novo de teste",
-  "sender": "João",
-  "receiver": "Joana",
-  "read": false,
-  "date": "2025-06-20T04:16:07.584Z"
+  "text": "Atualizado"
 }
 
 ### PutMessage
 # @name PutMessage
-PUT  {{baseUrl}}/messages/4
+PUT  {{baseUrl}}/messages/2
 Content-Type: application/json
 
 {
-  "text": "Este é um recado novo de teste",
-  "sender": "João",
-  "receiver": "Joana",
-  "read": false,
-  "date": "2025-06-20T04:16:07.584Z"
+  "text": "Updated"
 }
 
 ### DeleteMessage
