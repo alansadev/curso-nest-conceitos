@@ -24,7 +24,7 @@ export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
   @Get()
-  findAll(@Query() pagination: pagination) {
+  async findAll(@Query() pagination: pagination) {
     const { limit = 10, offset = 0 } = pagination;
 
     return this.messagesService.findAll();
