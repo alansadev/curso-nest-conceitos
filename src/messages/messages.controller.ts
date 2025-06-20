@@ -1,4 +1,13 @@
-import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  Param,
+  Patch,
+  Post,
+  Put,
+} from '@nestjs/common';
 
 @Controller('messages')
 export class MessagesController {
@@ -16,5 +25,18 @@ export class MessagesController {
   @Post()
   create(@Body() body: any) {
     return body;
+  }
+
+  @Put(':id')
+  updateRoute(@Param() id: string, @Body() body: any) {
+    return { id, ...body };
+  }
+
+  @Patch(':id')
+  patchRoute(@Param() id: string, @Body() body: any) {
+    return {
+      id,
+      ...body,
+    };
   }
 }

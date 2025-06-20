@@ -33,3 +33,13 @@ Content-Type: application/json
   "message": "Este é o recado que estou enviando.",
   "nova_chave": "outro valor"
 }
+
+### PatchMessage
+# @name PatchMessage
+PATCH  {{baseUrl}}/messages/1
+Content-Type: application/json
+
+{
+  "message": "Este é o recado que estou atualizando.",
+  "nova_chave": "outro valor"
+}
