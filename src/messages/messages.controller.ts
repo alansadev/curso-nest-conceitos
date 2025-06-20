@@ -11,11 +11,20 @@ import {
   Query,
 } from '@nestjs/common';
 
+type messageBody = {
+  message: string;
+  nova_chave: string;
+};
+type pagination = {
+  offset: number;
+  limit: number;
+};
+
 @Controller('messages')
 export class MessagesController {
   @HttpCode(201)
   @Get()
-  findAll(@Query() pagination: any) {
+  findAll(@Query() pagination: pagination) {
     const { limit = 10, offset = 0 } = pagination;
     return `This route return all messages. Limit=${limit}, Offset=${offset}`;
   }
@@ -26,17 +35,17 @@ export class MessagesController {
   }
 
   @Post()
-  create(@Body() body: any) {
+  create(@Body() body: messageBody) {
     return body;
   }
 
   @Put(':id')
-  updateRoute(@Param() id: string, @Body() body: any) {
+  updateRoute(@Param() id: string, @Body() body: messageBody) {
     return { id, ...body };
   }
 
   @Patch(':id')
-  patchRoute(@Param() id: string, @Body() body: any) {
+  patchRoute(@Param() id: string, @Body() body: messageBody) {
     return {
       id,
       ...body,
@@ -45,6 +54,6 @@ export class MessagesController {
 
   @Delete(':id')
   deleteRoute(@Param('id') id: string) {
-    return 'deleted';
+    return `deleted - ${id}`;
   }
 }
