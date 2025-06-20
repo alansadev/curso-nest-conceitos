@@ -1,20 +1,23 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   Param,
   Patch,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 
 @Controller('messages')
 export class MessagesController {
   @HttpCode(201)
   @Get()
-  findAll() {
-    return 'This route return all messages';
+  findAll(@Query() pagination: any) {
+    const { limit = 10, offset = 0 } = pagination;
+    return `This route return all messages. Limit=${limit}, Offset=${offset}`;
   }
 
   @Get(':id')
@@ -38,5 +41,10 @@ export class MessagesController {
       id,
       ...body,
     };
+  }
+
+  @Delete(':id')
+  deleteRoute(@Param('id') id: string) {
+    return 'deleted';
   }
 }

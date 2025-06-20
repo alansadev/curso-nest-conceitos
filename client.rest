@@ -43,3 +43,18 @@ Content-Type: application/json
   "message": "Este é o recado que estou atualizando.",
   "nova_chave": "outro valor"
 }
+
+### PutMessage
+# @name PutMessage
+PUT  {{baseUrl}}/messages/1
+Content-Type: application/json
+
+{
+  "message": "Este é o recado que estou atualizando.",
+  "nova_chave": "outro valor"
+}
+
+
+### DeleteMessage
+# @name DeleteMessage
+DELETE  {{baseUrl}}/messages/1
