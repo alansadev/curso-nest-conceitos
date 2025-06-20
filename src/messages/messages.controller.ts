@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpCode,
   Param,
   Patch,
   Post,
@@ -11,11 +10,9 @@ import {
   Query,
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
+import { CreateMessageDto } from './dto/create-message.dto';
+import { UpdateMessageDto } from './dto/update-message.dto';
 
-type messageBody = {
-  message: string;
-  nova_chave: string;
-};
 type pagination = {
   offset: number;
   limit: number;
@@ -38,18 +35,24 @@ export class MessagesController {
   }
 
   @Post()
-  create(@Body() body: any) {
-    return this.messagesService.create(body);
+  create(@Body() createMessageDto: CreateMessageDto) {
+    return this.messagesService.create(createMessageDto);
   }
 
   @Put(':id')
-  updateRoute(@Param('id') id: string, @Body() body: messageBody) {
-    return this.messagesService.update(id, body);
+  updateRoute(
+    @Param('id') id: string,
+    @Body() updateMessageDto: UpdateMessageDto,
+  ) {
+    return this.messagesService.update(id, updateMessageDto);
   }
 
   @Patch(':id')
-  patchRoute(@Param('id') id: string, @Body() body: messageBody) {
-    return this.messagesService.update(id, body);
+  patchRoute(
+    @Param('id') id: string,
+    @Body() updateMessageDto: UpdateMessageDto,
+  ) {
+    return this.messagesService.update(id, updateMessageDto);
   }
 
   @Delete(':id')

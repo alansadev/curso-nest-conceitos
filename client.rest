@@ -24,7 +24,7 @@ GET {{baseUrl}}/messages/
 
 ### Message with params
 # @name MessageParam
-GET {{baseUrl}}/messages/1
+GET {{baseUrl}}/messages/3
 
 ### CreateMessage
 # @name CreateMessage
@@ -32,31 +32,37 @@ POST {{baseUrl}}/messages/
 Content-Type: application/json
 
 {
-  "message": "Este é o recado que estou enviando.",
-  "nova_chave": "outro valor"
+  "text": "Este é um recado de teste",
+  "sender": "Joana",
+  "receiver": "João"
 }
 
 ### PatchMessage
 # @name PatchMessage
-PATCH  {{baseUrl}}/messages/1
+PATCH  {{baseUrl}}/messages/6
 Content-Type: application/json
 
 {
-  "message": "Este é o recado que estou atualizando.",
-  "nova_chave": "outro valor"
+  "text": "Este é um recado novo de teste",
+  "sender": "João",
+  "receiver": "Joana",
+  "read": false,
+  "date": "2025-06-20T04:16:07.584Z"
 }
 
 ### PutMessage
 # @name PutMessage
-PUT  {{baseUrl}}/messages/1
+PUT  {{baseUrl}}/messages/4
 Content-Type: application/json
 
 {
-  "message": "Este é o recado que estou atualizando.",
-  "nova_chave": "outro valor"
+  "text": "Este é um recado novo de teste",
+  "sender": "João",
+  "receiver": "Joana",
+  "read": false,
+  "date": "2025-06-20T04:16:07.584Z"
 }
-
 
 ### DeleteMessage
 # @name DeleteMessage
-DELETE  {{baseUrl}}/messages/1
+DELETE  {{baseUrl}}/messages/2
