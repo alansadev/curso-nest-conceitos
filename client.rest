@@ -19,12 +19,12 @@ GET {{baseUrl}}/conceitos/
 ### Messages
 # @name MessageAll
 GET {{baseUrl}}/messages/
-?limit=10
-&offset=10
+# ?limit=10
+# &offset=10
 
 ### Message with params
 # @name MessageParam
-GET {{baseUrl}}/messages/3
+GET {{baseUrl}}/messages/2
 
 ### CreateMessage
 # @name CreateMessage
@@ -32,14 +32,14 @@ POST {{baseUrl}}/messages/
 Content-Type: application/json
 
 {
-  "text": "Este é um recado de teste",
+  "text": "recado",
   "sender": "Joana",
   "receiver": "João"
 }
 
 ### PatchMessage
 # @name PatchMessage
-PATCH  {{baseUrl}}/messages/2
+PATCH  {{baseUrl}}/messages/5
 Content-Type: application/json
 
 {
@@ -48,13 +48,56 @@ Content-Type: application/json
 
 ### PutMessage
 # @name PutMessage
-PUT  {{baseUrl}}/messages/2
+PUT  {{baseUrl}}/messages/5
 Content-Type: application/json
 
 {
-  "text": "Updated"
+  "text": "Updated",
+  "sender": "João",
+  "receiver": "Joana"
 }
 
 ### DeleteMessage
 # @name DeleteMessage
-DELETE  {{baseUrl}}/messages/2
+DELETE  {{baseUrl}}/messages/4
+
+# People
+### List all people
+GET {{baseUrl}}/people/
+
+### List person for id
+GET {{baseUrl}}/people/3/
+
+### Create person
+POST {{baseUrl}}/people/
+Content-Type: application/json
+
+{
+  "email": "email@email.com",
+  "password": "123456",
+  "name": "Alan"
+}
+
+### PatchPerson
+# @name PatchPerson
+PATCH  {{baseUrl}}/people/12
+Content-Type: application/json
+
+{
+  "password": "123456",
+  "name": "Alan"
+}
+
+### PutPerson
+# @name PutPerson
+# PUT  {{baseUrl}}/people/12
+# Content-Type: application/json
+
+# {
+#   "password": "Updated",
+#   "name": "João"
+# }
+
+### DeletePerson
+# @name DeletePerson
+DELETE  {{baseUrl}}/people/11
