@@ -1,24 +1,29 @@
+import { Person } from 'src/people/entities/person.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity('messages')
-export class MessageEntity {
+export class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'varchar', length: 255 })
   text: string;
 
-  @Column({ type: 'varchar', length: 50 })
-  sender: string;
+  @ManyToOne(() => Person)
+  @JoinColumn({ name: 'sender' })
+  sender: Person;
 
-  @Column({ type: 'varchar', length: 50 })
-  receiver: string;
+  @ManyToOne(() => Person)
+  @JoinColumn({ name: 'receiver' })
+  receiver: Person;
 
   @Column({ default: false })
   read: boolean;
